@@ -1,7 +1,7 @@
 name: versioning_anything
 description: Simple library for version manager of tables, databases or anything.
 version: 1.0.0
-repository: https://github.com/fluttercommunity/plus_plugins/tree/main/packages/
+repository: https://github.com/daniel-inigo/versioning-anything
 
 environment:
   sdk: '>=2.12.1 <3.0.0'
