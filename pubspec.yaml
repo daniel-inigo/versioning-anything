@@ -1,6 +1,7 @@
 name: versioning_anything
 description: Simple library for version manager of tables, databases or anything.
 version: 1.0.0
+maintainer: Daniel Íñigo (daniel.inigo.dev@gmail.com)
 repository: https://github.com/daniel-inigo/versioning-anything
 
 environment:
