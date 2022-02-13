@@ -1,4 +1,4 @@
-abstract class VersioningBase {
+abstract class VersioningResourceBase {
   String get resourceName;
   Future<bool> canExecute();
 

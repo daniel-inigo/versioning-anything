@@ -3,10 +3,10 @@ Simple library for version manager of tables, databases or anything.
 
 ## Examples
 
-### Implement interface VersioningBase in a class.
+### Implement interface VersioningResourceBase in a class.
 
 ```dart
-    class VersioningTableExample implements VersioningBase {
+    class VersioningSourceExample implements VersioningResourceBase {
         @override
         String get resourceName => "table_example";
 
@@ -37,7 +37,7 @@ Simple library for version manager of tables, databases or anything.
 ### Create a VersionModel provider implments VersionServiceProviderBase.
 
 ```dart
-    class VersioningServiceProviderExample implements VersioningServiceProviderBase {
+    class VersioningProviderExample implements VersioningProviderBase {
         @override
         Future<VersioningModel?> get(String resourceName) async {
             // Read your current database library for retrieve the  model.
@@ -51,15 +51,15 @@ Simple library for version manager of tables, databases or anything.
     }   
 ```
 
-### Add the versioning resources, the provider and execute the service.
+### Add the resources, provider, and run the service.
 ```dart
     await VersioningService()
-        .add(VersioningTableExample())
-        .add(VersioningTableExample2())
-        .execute(VersioningServiceProviderExample());
+        .add(VersioningSourceExample())
+        .add(VersioningSourceExample2())
+        .execute(VersioningProviderExample());
 ```
 
-### When one resource is executed, it don't will executed anymore. In this case you can reset the service.
+### When a resource is executed, it will not be executed anymore. In this case, you can restore the service.
 ```dart
     await VersioningService().reset();
 ```

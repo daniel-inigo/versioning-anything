@@ -5,16 +5,16 @@ import 'dart:async';
 import '../versioning_anything.dart';
 
 class VersioningService {
-  final List<VersioningBase> _versioning = [];
+  final List<VersioningResourceBase> _versioning = [];
   final List<String> _versioningExecuteds = [];
 
-  VersioningService add(VersioningBase versioning) {
+  VersioningService add(VersioningResourceBase versioning) {
     _versioning.add(versioning);
     return this;
   }
 
-  Future<void> execute(VersioningServiceProviderBase provider) async {
-    for (VersioningBase v in _versioning) {
+  Future<void> execute(VersioningProviderBase provider) async {
+    for (VersioningResourceBase v in _versioning) {
       if (_versioningExecuteds.contains(v.resourceName)) continue;
       _versioningExecuteds.add(v.resourceName);
       if (!(await v.canExecute())) continue;
@@ -23,7 +23,7 @@ class VersioningService {
   }
 
   Future<void> _execute(
-      VersioningBase v, VersioningServiceProviderBase p) async {
+      VersioningResourceBase v, VersioningProviderBase p) async {
     final m = await p.get(v.resourceName);
 
     if (m == null)
@@ -33,8 +33,8 @@ class VersioningService {
   }
 
   Future<void> _create(
-    VersioningBase v,
-    VersioningServiceProviderBase p,
+    VersioningResourceBase v,
+    VersioningProviderBase p,
   ) async {
     await v.create();
     await p.set(VersioningModel(
@@ -44,9 +44,9 @@ class VersioningService {
   }
 
   Future<void> _update(
-    VersioningBase v,
+    VersioningResourceBase v,
     VersioningModel model,
-    VersioningServiceProviderBase provider,
+    VersioningProviderBase provider,
   ) async {
     int version = model.version;
     final functions = v.update();

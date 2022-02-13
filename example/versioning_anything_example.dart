@@ -33,7 +33,7 @@ void main() async {
   );
 }
 
-class VersioningServiceProviderMock implements VersioningServiceProviderBase {
+class VersioningServiceProviderMock implements VersioningProviderBase {
   final Future<VersioningModel?> Function(String resourceName) _get;
   final Future<void> Function(VersioningModel model) _set;
 
@@ -46,7 +46,7 @@ class VersioningServiceProviderMock implements VersioningServiceProviderBase {
   Future<void> set(VersioningModel model) => _set(model);
 }
 
-class VersioningMock implements VersioningBase {
+class VersioningMock implements VersioningResourceBase {
   bool canExecuteValue = true;
   String name = "Test";
 

@@ -4,6 +4,6 @@
 library versioning_anything;
 
 export 'src/versioning_service.dart';
-export 'src/versioning_base.dart';
+export 'src/versioning_resource_base.dart';
 export 'src/versioning_model.dart';
-export 'src/versioning_service_provider_base.dart';
+export 'src/versioning_provider_base.dart';
